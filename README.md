@@ -1110,6 +1110,6 @@ A: (1) Verify absolute paths in the crontab. (2) Check `/var/log/audit_cron.log`
 
 <div align="center">
 
-*Built with 🛠️ Bash · Designed for Linux · Made by humans who care about clean systems.*
+*Built with 🛠️ Bash · Designed for Linux ·
 
 </div>
