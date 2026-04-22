@@ -5,7 +5,7 @@
 
 ---
 
-## 23. Authors & License
+## 1. Authors & License
 
 | Field | Info |
 |-------|------|
@@ -21,36 +21,36 @@
 
 
 ## 📋 Table of Contents
-
-1. [Project Overview](#1-project-overview)
-2. [Features](#2-features)
-3. [Project Structure](#3-project-structure)
-4. [Requirements](#4-requirements)
+1. [Authors & License](#23-authors--license)
+2. [Project Overview](#1-project-overview)
+3. [Features](#2-features)
+4. [Project Structure](#3-project-structure)
+5. [Requirements](#4-requirements)
    - [Core Tools](#41-core-tools)
    - [Optional Tools](#42-optional-tools)
-5. [Installation](#5-installation)
-6. [Configuration](#6-configuration)
-7. [Usage](#7-usage)
-8. [Script Reference](#8-script-reference)
-9. [Email Setup](#9-email-setup)
-10. [Cron Automation](#10-cron-automation)
-11. [Remote Monitoring Deep Dive](#11-remote-monitoring-deep-dive)
-12. [PDF Report Anatomy](#12-pdf-report-anatomy)
-13. [Security Considerations](#13-security-considerations)
-14. [Troubleshooting](#14-troubleshooting)
-15. [Known Limitations](#15-known-limitations)
-16. [Compatibility Matrix](#16-compatibility-matrix)
-17. [Data Flow Diagram](#17-data-flow-diagram)
-18. [Output Files Reference](#18-output-files-reference)
-19. [Environment Variables & Secrets Management](#19-environment-variables--secrets-management)
-20. [Extending the Toolkit](#20-extending-the-toolkit)
-21. [FAQ](#21-faq)
-22. [Glossary](#22-glossary)
-23. [Authors & License](#23-authors--license)
+6. [Installation](#5-installation)
+7. [Configuration](#6-configuration)
+8. [Usage](#7-usage)
+9. [Script Reference](#8-script-reference)
+10. [Email Setup](#9-email-setup)
+11. [Cron Automation](#10-cron-automation)
+12. [Remote Monitoring Deep Dive](#11-remote-monitoring-deep-dive)
+13. [PDF Report Anatomy](#12-pdf-report-anatomy)
+14. [Security Considerations](#13-security-considerations)
+15. [Troubleshooting](#14-troubleshooting)
+16. [Known Limitations](#15-known-limitations)
+17. [Compatibility Matrix](#16-compatibility-matrix)
+18. [Data Flow Diagram](#17-data-flow-diagram)
+19. [Output Files Reference](#18-output-files-reference)
+20. [Environment Variables & Secrets Management](#19-environment-variables--secrets-management)
+21. [Extending the Toolkit](#20-extending-the-toolkit)
+22. [FAQ](#21-faq)
+23. [Glossary](#22-glossary)
+
 
 ---
 
-## 1. Project Overview
+## 2. Project Overview
 
 The **System Audit Toolkit** is a collection of **7 Bash scripts** offering **6 audit operations** via a single interactive launcher or a fully automated, unattended pipeline.
 
@@ -69,7 +69,7 @@ Developed for system administrators, IT auditors, and students studying operatin
 
 ---
 
-## 2. Features
+## 3. Features
 
 ### ✅ Core Features
 
@@ -94,7 +94,7 @@ Developed for system administrators, IT auditors, and students studying operatin
 
 ---
 
-## 3. Project Structure
+## 4. Project Structure
 
 All scripts are **self-contained** and must reside in the **same directory**. `Launcher.sh` locates sibling scripts at runtime via `SCRIPT_DIR` — no hardcoded paths required.
 
@@ -135,9 +135,9 @@ All scripts are **self-contained** and must reside in the **same directory**. `L
 
 ---
 
-## 4. Requirements
+## 5. Requirements
 
-### 4.1 Core Tools
+### 5.1 Core Tools
 
 These tools are **required** for primary functionality. The toolkit will attempt to auto-install missing packages on first run (Debian/Ubuntu only).
 
@@ -158,7 +158,7 @@ These tools are **required** for primary functionality. The toolkit will attempt
 sudo apt update && sudo apt install enscript ghostscript msmtp sshpass -y
 ```
 
-### 4.2 Optional Tools
+### 5.2 Optional Tools
 
 These tools extend functionality but are **not required** for basic operation. Scripts will degrade gracefully or skip the relevant section if they are absent.
 
@@ -180,7 +180,7 @@ sudo apt update && sudo apt install lshw upower curl sysstat lm-sensors smartmon
 
 ---
 
-## 5. Installation
+## 6. Installation
 
 ### Step 1 — Clone or Download
 
@@ -237,9 +237,9 @@ If the TUI menu appears, installation is complete.
 
 ---
 
-## 6. Configuration
+## 7. Configuration
 
-### 6.1 Automation Credentials
+### 7.1 Automation Credentials
 
 Before using **Option 6 (Full Automation)** or scheduling with cron, open `Automation.sh` and configure the three credential variables at the top of the file:
 
@@ -264,7 +264,7 @@ RECIPIENT_EMAIL="recipient@example.com"      # Where reports are delivered
 > ⚠️ **Security Note:** Never commit `Automation.sh` with real credentials to a public repository.  
 > See [Section 19 — Environment Variables & Secrets Management](#19-environment-variables--secrets-management) for safer alternatives.
 
-### 6.2 Restrict Credential File Permissions
+### 7.2 Restrict Credential File Permissions
 
 After setting credentials, restrict file permissions to prevent other users from reading them:
 
@@ -272,7 +272,7 @@ After setting credentials, restrict file permissions to prevent other users from
 chmod 600 Automation.sh
 ```
 
-### 6.3 Verifying msmtp
+### 7.3 Verifying msmtp
 
 To test email delivery before scheduling with cron:
 
@@ -282,9 +282,9 @@ echo "Test" | msmtp --debug your-recipient@example.com
 
 ---
 
-## 7. Usage
+## 8. Usage
 
-### 7.1 Launching the Interactive Menu
+### 8.1 Launching the Interactive Menu
 
 The recommended entry point for all operations:
 
@@ -294,7 +294,7 @@ sudo bash Launcher.sh
 
 A full-screen TUI menu appears with numbered options **1–6**. Use the keyboard to select an action, then press `Enter`. After each operation completes, press `Enter` again to return to the menu.
 
-### 7.2 Menu Options
+### 8.2 Menu Options
 
 #### `[1]` Hardware Audit
 
@@ -387,7 +387,7 @@ Logs every step with timestamps to `~/Desktop/system_report/automation_send.log`
 sudo bash Automation.sh
 ```
 
-### 7.3 Running Scripts Directly
+### 8.3 Running Scripts Directly
 
 Any script can be run independently outside the launcher:
 
@@ -402,7 +402,7 @@ sudo bash Automation.sh    # Full unattended pipeline
 
 ---
 
-## 8. Script Reference
+## 9. Script Reference
 
 ### `Launcher.sh`
 
@@ -527,13 +527,13 @@ A fully unattended pipeline. Requires credentials to be pre-configured in the sc
 
 ---
 
-## 9. Email Setup
+## 10. Email Setup
 
-### 9.1 Why a Gmail App Password?
+### 10.1 Why a Gmail App Password?
 
 Gmail blocks "less secure app access" by default. To send email programmatically via SMTP, you must use a **Gmail App Password** — a 16-character token separate from your account password. This requires 2-Step Verification to be enabled on your Google account.
 
-### 9.2 Creating a Gmail App Password
+### 10.2 Creating a Gmail App Password
 
 1. Go to **myaccount.google.com**
 2. Navigate to **Security → 2-Step Verification** (enable if not already active)
@@ -542,7 +542,7 @@ Gmail blocks "less secure app access" by default. To send email programmatically
 5. Click **Generate** — Google displays a **16-character password**
 6. Copy it immediately (it will not be shown again)
 
-### 9.3 Using the App Password
+### 10.3 Using the App Password
 
 **In `Send.sh` (interactive):** Enter the 16-character password when prompted.
 
@@ -552,7 +552,7 @@ Gmail blocks "less secure app access" by default. To send email programmatically
 SENDER_PASS="abcd efgh ijkl mnop"
 ```
 
-### 9.4 How msmtp Is Configured
+### 10.4 How msmtp Is Configured
 
 `Send.sh` and `Automation.sh` write a temporary msmtp config to `/tmp/.msmtp_tmp.conf`:
 
@@ -572,7 +572,7 @@ logfile /tmp/msmtp.log
 
 This file is created with `chmod 600` and **deleted immediately** after the email is sent.
 
-### 9.5 Testing Email Delivery Manually
+### 10.5 Testing Email Delivery Manually
 
 ```bash
 echo "Test body" | msmtp \
@@ -587,17 +587,17 @@ echo "Test body" | msmtp \
 
 ---
 
-## 10. Cron Automation
+## 11. Cron Automation
 
 `Automation.sh` is designed to run fully unattended and is ideal for scheduled execution via cron.
 
-### 10.1 Opening Root Crontab
+### 11.1 Opening Root Crontab
 
 ```bash
 sudo crontab -e
 ```
 
-### 10.2 Example Cron Schedules
+### 11.2 Example Cron Schedules
 
 ```cron
 # Run every day at 08:00
@@ -613,7 +613,7 @@ sudo crontab -e
 0 */6 * * * /path/to/Automation.sh >> /var/log/audit_cron.log 2>&1
 ```
 
-### 10.3 Cron Field Reference
+### 11.3 Cron Field Reference
 
 ```
 ┌─────── minute   (0–59)
@@ -625,7 +625,7 @@ sudo crontab -e
 * * * * *  /path/to/Automation.sh
 ```
 
-### 10.4 Verifying Cron Is Running
+### 11.4 Verifying Cron Is Running
 
 ```bash
 # Check cron service status
@@ -638,7 +638,7 @@ grep CRON /var/log/syslog | tail -20
 tail -f /var/log/audit_cron.log
 ```
 
-### 10.5 Important Cron Considerations
+### 11.5 Important Cron Considerations
 
 - Cron runs with a **minimal environment** — always use **absolute paths** in the cron entry.
 - The `PATH` variable in cron is limited; if scripts fail silently, prefix with:  
@@ -650,9 +650,9 @@ tail -f /var/log/audit_cron.log
 
 ---
 
-## 11. Remote Monitoring Deep Dive
+## 12. Remote Monitoring Deep Dive
 
-### 11.1 How Monitoring.sh Works
+### 12.1 How Monitoring.sh Works
 
 ```
 User Input (IPs, credentials)
@@ -672,7 +672,7 @@ Intermediate .txt file deleted
 Consolidated SUMMARY_<timestamp>.pdf generated
 ```
 
-### 11.2 Network Requirements
+### 12.2 Network Requirements
 
 | Requirement | Detail |
 |-------------|--------|
@@ -681,7 +681,7 @@ Consolidated SUMMARY_<timestamp>.pdf generated
 | Firewall | Remote firewall must allow inbound SSH connections |
 | Credentials | Valid username and password for each remote host |
 
-### 11.3 Required Remote Host Software
+### 12.3 Required Remote Host Software
 
 For full data collection, the following should be available on each remote machine:
 
@@ -690,7 +690,7 @@ For full data collection, the following should be available on each remote machi
 sudo apt install lshw dmidecode sysstat smartmontools lm-sensors -y
 ```
 
-### 11.4 Security Warning
+### 12.4 Security Warning
 
 `Monitoring.sh` uses `sshpass` with `-o StrictHostKeyChecking=no`, which disables host key verification. This is appropriate **only on trusted private networks** (e.g., a lab environment). For production use, replace password authentication with SSH key pairs:
 
@@ -706,9 +706,9 @@ ssh-copy-id user@remote-host-ip
 
 ---
 
-## 12. PDF Report Anatomy
+## 13. PDF Report Anatomy
 
-### 12.1 full_report.pdf — Section Breakdown
+### 13.1 full_report.pdf — Section Breakdown
 
 | Section | Contents |
 |---------|----------|
@@ -719,7 +719,7 @@ ssh-copy-id user@remote-host-ip
 | 5. Software & Security | Kernel version, active services count, open ports, top processes |
 | 6. Battery | Battery status via `upower` (or "No Battery Detected") |
 
-### 12.2 short_report.pdf — Section Breakdown
+### 13.2 short_report.pdf — Section Breakdown
 
 | Section | Contents |
 |---------|----------|
@@ -732,7 +732,7 @@ ssh-copy-id user@remote-host-ip
 | Top Processes | Top 5 processes by RAM |
 | Network | Primary interface and IP |
 
-### 12.3 PDF Generation Pipeline
+### 13.3 PDF Generation Pipeline
 
 ```
 Data Collection (Bash commands)
@@ -752,9 +752,9 @@ xdg-open ~/Desktop/system_report/ (folder auto-opens)
 
 ---
 
-## 13. Security Considerations
+## 14. Security Considerations
 
-### 13.1 Credential Handling
+### 14.1 Credential Handling
 
 | Risk | Mitigation |
 |------|-----------|
@@ -779,13 +779,13 @@ SENDER_PASS="${AUDIT_PASS}"
 RECIPIENT_EMAIL="${AUDIT_RECIPIENT}"
 ```
 
-### 13.2 SSH / Remote Monitoring
+### 14.2 SSH / Remote Monitoring
 
 - `Monitoring.sh` uses `sshpass` with `-o StrictHostKeyChecking=no` — disables host key verification; appropriate only on **trusted private networks**.
 - Remote machine passwords exist only in shell variables; they are **never written to disk**.
 - For production use, replace password auth with **SSH key pairs** (see [Section 11.4](#114-security-warning)).
 
-### 13.3 Root Privilege
+### 14.3 Root Privilege
 
 | Script | Root Required | Reason |
 |--------|:---:|--------|
@@ -796,7 +796,7 @@ RECIPIENT_EMAIL="${AUDIT_RECIPIENT}"
 | `Automation.sh` | ✅ | All of the above |
 | `Monitoring.sh` | ❌ | Local: no root needed. Remote: root may be needed on target host |
 
-### 13.4 Principle of Least Privilege
+### 14.4 Principle of Least Privilege
 
 For production deployments, consider limiting the scope of access:
 
@@ -806,7 +806,7 @@ For production deployments, consider limiting the scope of access:
 
 ---
 
-## 14. Troubleshooting
+## 15. Troubleshooting
 
 | Symptom | Likely Cause | Remedy |
 |---------|-------------|--------|
@@ -828,7 +828,7 @@ For production deployments, consider limiting the scope of access:
 
 ---
 
-## 15. Known Limitations
+## 16. Known Limitations
 
 - 🐧 **Debian/Ubuntu only** — Designed for Debian/Ubuntu-based Linux distributions. RPM-based systems (RHEL, Fedora, CentOS) may require adaptations for `dnf`/`rpm` package manager commands.
 - 🎮 **GPU utilization** — GPU usage percentage requires proprietary **NVIDIA drivers** (`nvidia-smi`). AMD and Intel integrated GPUs report only the device name, not real-time utilization.
@@ -842,7 +842,7 @@ For production deployments, consider limiting the scope of access:
 
 ---
 
-## 16. Compatibility Matrix
+## 17. Compatibility Matrix
 
 | Feature | Ubuntu 20.04 | Ubuntu 22.04 | Ubuntu 24.04 | Debian 11 | Debian 12 | RHEL/Fedora |
 |---------|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -860,7 +860,7 @@ For production deployments, consider limiting the scope of access:
 
 ---
 
-## 17. Data Flow Diagram
+## 18. Data Flow Diagram
 
 ### Local Audit Flow
 
@@ -906,7 +906,7 @@ Monitoring.sh
 
 ---
 
-## 18. Output Files Reference
+## 19. Output Files Reference
 
 | File | Location | Generated By | Description |
 |------|----------|-------------|-------------|
@@ -921,7 +921,7 @@ Monitoring.sh
 
 ---
 
-## 19. Environment Variables & Secrets Management
+## 20. Environment Variables & Secrets Management
 
 Hardcoding credentials directly in `Automation.sh` is convenient but not ideal. Here are safer alternatives:
 
@@ -985,7 +985,7 @@ SENDER_PASS=$(pass audit/app-password)
 
 ---
 
-## 20. Extending the Toolkit
+## 21. Extending the Toolkit
 
 The toolkit's modular design makes it straightforward to add new audit capabilities.
 
@@ -1046,7 +1046,7 @@ tls on
 
 ---
 
-## 21. FAQ
+## 22. FAQ
 
 **Q: Do I need root to run all scripts?**  
 A: Most scripts (`Hardware.sh`, `Software.sh`, `Report.sh`, `Send.sh`, `Automation.sh`) require root for full functionality. `Monitoring.sh` does not require local root, but may need root on the remote host for complete hardware data.
@@ -1077,7 +1077,7 @@ A: (1) Verify absolute paths in the crontab. (2) Check `/var/log/audit_cron.log`
 
 ---
 
-## 22. Glossary
+## 23. Glossary
 
 | Term | Definition |
 |------|-----------|
